@@ -29,7 +29,7 @@ td{color:#999}
 <div class="container">
 <a class="back" href="index.html">&larr; Back to Progressive Overload</a>
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: March 30, 2026</p>
+<p class="updated">Last updated: April 2, 2026</p>
 
 <p>Progressive Overload is operated by ProgressiveOverload LLC ("we", "our", "us", "the app"), a workout tracking application. We respect your privacy and are committed to protecting your personal data. This policy explains what we collect, why, and how it's protected.</p>
 
@@ -71,15 +71,19 @@ td{color:#999}
 <h3>AI Chat History</h3>
 <p>Conversations with the Overload Assistant are saved to provide continuity between sessions. You can clear your chat history at any time.</p>
 
+<h3>AI Coach Notes</h3>
+<p>After each workout, the app generates a brief summary of your training patterns, preferences, and progress using AI. These "coach notes" are stored on your profile and used to personalize future AI coaching responses. Coach notes contain observations like strength trends, exercise preferences, and training consistency — they do not contain sensitive personal information beyond what you've already provided through your workout data. Pro subscribers can view a polished version of what the coach has learned in the "Your Coach Knows" section.</p>
+
 <h2>2. How We Use Your Information</h2>
 
 <table>
 <tr><th>Data</th><th>Purpose</th></tr>
 <tr><td>Email</td><td>Authentication, account recovery</td></tr>
 <tr><td>Profile (name, age, gender, weight, height)</td><td>Personalized AI coaching, exercise safety limits, strength comparisons</td></tr>
-<tr><td>Workout history</td><td>Progress tracking, AI recommendations, share cards, analytics</td></tr>
+<tr><td>Workout history</td><td>Progress tracking, AI recommendations, share cards, analytics, proactive coaching insights</td></tr>
 <tr><td>Body measurements</td><td>Body composition tracking and trends</td></tr>
 <tr><td>Chat history</td><td>AI conversation continuity</td></tr>
+<tr><td>Coach notes</td><td>Long-term AI coaching personalization — helps the AI remember your patterns across sessions</td></tr>
 </table>
 
 <h2>3. Third-Party Services</h2>
@@ -88,9 +92,9 @@ td{color:#999}
 <p>Your data is stored in a Supabase-hosted PostgreSQL database. Supabase provides authentication, data storage, and serverless functions. All data is protected by Row Level Security — users can only access their own data. <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a></p>
 
 <h3>Anthropic (AI Processing)</h3>
-<p>When you use AI features (workout summaries, the Overload Assistant, AI split generation), your profile information and workout data are sent to Anthropic's API (Claude) for processing. This data is sent through a secure server-side proxy — your device never contacts Anthropic directly. <strong>Anthropic does not use API data to train their models.</strong> <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></p>
+<p>When you use AI features (workout summaries, the Overload Assistant, AI split generation, coach notes generation, proactive coaching insights), your profile information and workout data are sent to Anthropic's API (Claude) for processing. This data is sent through a secure server-side proxy — your device never contacts Anthropic directly. <strong>Anthropic does not use API data to train their models.</strong> <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></p>
 
-<p>Data sent to Anthropic includes: your name, age, gender, weight, height, experience level, training goal, recent workout history, and your message. This data is used solely to generate personalized responses and is not stored by Anthropic beyond the request.</p>
+<p>Data sent to Anthropic includes: your name, age, gender, weight, height, experience level, training goal, recent workout history, coach notes, and your message. This data is used solely to generate personalized responses and is not stored by Anthropic beyond the request.</p>
 
 <h3>RevenueCat (Subscription Management)</h3>
 <p>If you subscribe to Overload Pro, RevenueCat manages the subscription through Apple's App Store. RevenueCat receives an anonymous user identifier (not your email or name) to link purchases to your account. <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a></p>
@@ -113,7 +117,7 @@ td{color:#999}
 </ul>
 
 <h2>5. Data Retention</h2>
-<p>We retain your data for as long as your account is active. If you delete your account, all data is permanently removed from our database, including your authentication record, profile, workout history, training splits, and chat history. This deletion is irreversible.</p>
+<p>We retain your data for as long as your account is active. If you delete your account, all data is permanently removed from our database, including your authentication record, profile, workout history, training splits, coach notes, and chat history. This deletion is irreversible.</p>
 
 <h2>6. Your Rights</h2>
 <p>You have the right to:</p>
