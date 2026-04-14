@@ -75,6 +75,10 @@ code{background:#1a1a1a;padding:1px 6px;border-radius:4px;font-size:13px;color:#
 <h3>AI Coach Notes</h3>
 <p>After each workout, the app generates a brief summary of your training patterns, preferences, and progress using AI. These "coach notes" are stored on your profile and used to personalize future AI coaching responses. Coach notes contain observations like strength trends, exercise preferences, and training consistency — they do not contain sensitive personal information beyond what you've already provided through your workout data. Pro subscribers can view a polished version of what the coach has learned in the "Your Coach Knows" section.</p>
 
+<h3>Photo &amp; Video Split Import (Optional)</h3>
+<p>When you import a training split from a photo (a screenshot, a handwritten notebook page, a social media post) or a video (a screen recording of a workout video, a video of your training notes), the app compresses the media on your device and sends it to Anthropic's Claude Vision API for parsing into a structured routine. For videos, we extract still frames at two-second intervals <strong>locally on your device</strong> and send only those frames — the audio track and the original video file are never transmitted off your device. <strong>Neither the original media nor the extracted frames are stored in our database or logs.</strong> Only the final training split (which you review and save) is stored on your account.</p>
+<p>You must explicitly grant photo library access through your device's standard permission prompt the first time you use this feature. We only access media you directly pick from the system picker — we never scan your photo library in the background.</p>
+
 <h3>Split Import via URL (Optional)</h3>
 <p>When you paste a URL into the app's split creation flow, our server-side proxy fetches the publicly available content of that URL on your behalf. The URL and the fetched content are sent to Anthropic's Claude API for parsing into a structured training routine. <strong>Neither the URL nor the fetched content is persisted in our database or logs.</strong> Only the final training split (which you review and save) is stored on your account.</p>
 <p>We do not fetch content from sites whose <code>robots.txt</code> disallows automated access, from private networks, or from URLs that fail our security validation. Social media platforms (Instagram, TikTok, Facebook) are not supported for URL import due to their terms of service — the app directs users to screen-record and use Video Import instead. For abuse pattern detection, we log a non-reversible hash prefix of imported URLs (not the URL itself).</p>
@@ -93,18 +97,18 @@ code{background:#1a1a1a;padding:1px 6px;border-radius:4px;font-size:13px;color:#
 
 <h2>3. Third-Party Services</h2>
 
-<h3>Supabase (Database & Authentication)</h3>
+<h3>Supabase (Database &amp; Authentication)</h3>
 <p>Your data is stored in a Supabase-hosted PostgreSQL database. Supabase provides authentication, data storage, and serverless functions. All data is protected by Row Level Security — users can only access their own data. <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a></p>
 
 <h3>Anthropic (AI Processing)</h3>
-<p>When you use AI features (workout summaries, the Overload Assistant, AI split generation, coach notes generation, proactive coaching insights, URL split import), your profile information and workout data are sent to Anthropic's API (Claude) for processing. This data is sent through a secure server-side proxy — your device never contacts Anthropic directly. <strong>Anthropic does not use API data to train their models.</strong> <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></p>
+<p>When you use AI features (workout summaries, the Overload Assistant, AI split generation, coach notes generation, proactive coaching insights, photo/video/URL split import), your profile information and workout data are sent to Anthropic's API (Claude) for processing. This data is sent through a secure server-side proxy — your device never contacts Anthropic directly. <strong>Anthropic does not use API data to train their models.</strong> <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></p>
 
-<p>Data sent to Anthropic includes: your name, age, gender, weight, height, experience level, training goal, recent workout history, coach notes, your message, and — when you import a split from a URL — the publicly available text content fetched from that URL. This data is used solely to generate personalized responses and is not stored by Anthropic beyond the request.</p>
+<p>Data sent to Anthropic includes: your name, age, gender, weight, height, experience level, training goal, recent workout history, coach notes, your message, and — when you import a split — the content you've provided (compressed photo, extracted video frames, or text content fetched from a public URL). This data is used solely to generate personalized responses and is not stored by Anthropic beyond the request.</p>
 
 <h3>RevenueCat (Subscription Management)</h3>
 <p>If you subscribe to Overload Pro, RevenueCat manages the subscription through Apple's App Store. RevenueCat receives an anonymous user identifier (not your email or name) to link purchases to your account. <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a></p>
 
-<h3>Apple (App Store & Payments)</h3>
+<h3>Apple (App Store &amp; Payments)</h3>
 <p>Subscription payments are processed by Apple through the App Store. We never receive or store your payment information (credit card, Apple Pay details). <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a></p>
 
 <h3>Expo (Development Platform)</h3>
@@ -140,11 +144,12 @@ code{background:#1a1a1a;padding:1px 6px;border-radius:4px;font-size:13px;color:#
 <h2>8. Data We Do NOT Collect</h2>
 <ul>
 <li>We do not track your location</li>
-<li>We do not access your contacts, photos, or camera</li>
+<li>We do not access your contacts, photos, or camera without your explicit permission</li>
 <li>We do not serve advertisements</li>
 <li>We do not sell your data to third parties</li>
 <li>We do not store any data on your device</li>
-<li>We do not store URLs you import from or the content of those URLs</li>
+<li>We do not store the photos, video frames, or URLs you use for split import — only the resulting training split, after you review and save it</li>
+<li>We do not transmit video audio tracks — video frame extraction happens entirely on your device, and only the extracted frames are sent for AI processing</li>
 </ul>
 
 <h2>9. Changes to This Policy</h2>
