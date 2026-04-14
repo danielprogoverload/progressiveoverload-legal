@@ -23,13 +23,14 @@ table{width:100%;border-collapse:collapse;margin:16px 0}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid #1a1a1a;font-size:14px}
 th{color:#fff;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.08em}
 td{color:#999}
+code{background:#1a1a1a;padding:1px 6px;border-radius:4px;font-size:13px;color:#ddd}
 </style>
 </head>
 <body>
 <div class="container">
 <a class="back" href="index.html">&larr; Back to Progressive Overload</a>
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: April 2, 2026</p>
+<p class="updated">Last updated: April 14, 2026</p>
 
 <p>Progressive Overload is operated by ProgressiveOverload LLC ("we", "our", "us", "the app"), a workout tracking application. We respect your privacy and are committed to protecting your personal data. This policy explains what we collect, why, and how it's protected.</p>
 
@@ -74,6 +75,10 @@ td{color:#999}
 <h3>AI Coach Notes</h3>
 <p>After each workout, the app generates a brief summary of your training patterns, preferences, and progress using AI. These "coach notes" are stored on your profile and used to personalize future AI coaching responses. Coach notes contain observations like strength trends, exercise preferences, and training consistency — they do not contain sensitive personal information beyond what you've already provided through your workout data. Pro subscribers can view a polished version of what the coach has learned in the "Your Coach Knows" section.</p>
 
+<h3>Split Import via URL (Optional)</h3>
+<p>When you paste a URL into the app's split creation flow, our server-side proxy fetches the publicly available content of that URL on your behalf. The URL and the fetched content are sent to Anthropic's Claude API for parsing into a structured training routine. <strong>Neither the URL nor the fetched content is persisted in our database or logs.</strong> Only the final training split (which you review and save) is stored on your account.</p>
+<p>We do not fetch content from sites whose <code>robots.txt</code> disallows automated access, from private networks, or from URLs that fail our security validation. Social media platforms (Instagram, TikTok, Facebook) are not supported for URL import due to their terms of service — the app directs users to screen-record and use Video Import instead. For abuse pattern detection, we log a non-reversible hash prefix of imported URLs (not the URL itself).</p>
+
 <h2>2. How We Use Your Information</h2>
 
 <table>
@@ -92,9 +97,9 @@ td{color:#999}
 <p>Your data is stored in a Supabase-hosted PostgreSQL database. Supabase provides authentication, data storage, and serverless functions. All data is protected by Row Level Security — users can only access their own data. <a href="https://supabase.com/privacy" target="_blank">Supabase Privacy Policy</a></p>
 
 <h3>Anthropic (AI Processing)</h3>
-<p>When you use AI features (workout summaries, the Overload Assistant, AI split generation, coach notes generation, proactive coaching insights), your profile information and workout data are sent to Anthropic's API (Claude) for processing. This data is sent through a secure server-side proxy — your device never contacts Anthropic directly. <strong>Anthropic does not use API data to train their models.</strong> <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></p>
+<p>When you use AI features (workout summaries, the Overload Assistant, AI split generation, coach notes generation, proactive coaching insights, URL split import), your profile information and workout data are sent to Anthropic's API (Claude) for processing. This data is sent through a secure server-side proxy — your device never contacts Anthropic directly. <strong>Anthropic does not use API data to train their models.</strong> <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a></p>
 
-<p>Data sent to Anthropic includes: your name, age, gender, weight, height, experience level, training goal, recent workout history, coach notes, and your message. This data is used solely to generate personalized responses and is not stored by Anthropic beyond the request.</p>
+<p>Data sent to Anthropic includes: your name, age, gender, weight, height, experience level, training goal, recent workout history, coach notes, your message, and — when you import a split from a URL — the publicly available text content fetched from that URL. This data is used solely to generate personalized responses and is not stored by Anthropic beyond the request.</p>
 
 <h3>RevenueCat (Subscription Management)</h3>
 <p>If you subscribe to Overload Pro, RevenueCat manages the subscription through Apple's App Store. RevenueCat receives an anonymous user identifier (not your email or name) to link purchases to your account. <a href="https://www.revenuecat.com/privacy" target="_blank">RevenueCat Privacy Policy</a></p>
@@ -114,6 +119,7 @@ td{color:#999}
 <li><strong>Passwords</strong> are hashed by Supabase Auth and never stored in plain text</li>
 <li><strong>No data is stored on your device</strong> — all data lives in the cloud database</li>
 <li><strong>HTTPS/TLS</strong> encryption is used for all data in transit</li>
+<li><strong>URL imports</strong> are fetched through a security-hardened server-side proxy: https-only, DNS resolution validated against private network ranges (SSRF protection), <code>robots.txt</code> respected, size and timeout limits enforced, redirect chains capped and re-validated at each hop, and requests identify themselves with an honest User-Agent so site owners can choose to allow or deny access</li>
 </ul>
 
 <h2>5. Data Retention</h2>
@@ -138,6 +144,7 @@ td{color:#999}
 <li>We do not serve advertisements</li>
 <li>We do not sell your data to third parties</li>
 <li>We do not store any data on your device</li>
+<li>We do not store URLs you import from or the content of those URLs</li>
 </ul>
 
 <h2>9. Changes to This Policy</h2>
